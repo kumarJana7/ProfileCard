@@ -20,6 +20,7 @@ body {
 	color: #b0b0b0;
 	font-family: sans-serif;
 }
+
 .card2 {
 	border-radius: 40px;
 	width: 100%;
@@ -64,6 +65,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	border: none;
+	white-space: nowrap;
 }
 
 .button:active {
@@ -81,7 +83,9 @@ body {
 	display: flex;
 	gap: 20px;
 	justify-content: center;
+	flex-wrap: nowrap; /* ✅ FIX: prevents wrapping on larger screens */
 }
+
 .status {
 	display: flex;
 	align-items: baseline;
@@ -105,6 +109,7 @@ body {
 		sans-serif;
 	font-weight: 490;
 }
+
 #imagec {
 	height: 15px;
 	width: 15px;
@@ -118,92 +123,93 @@ body {
 }
 
 .toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #98f76b;
-    color: black;
-    padding: 12px 24px;
-    border-radius: 10px;
-    font-family: sans-serif;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 9999;
-    max-width: 80%;
-    text-align: center;
+	position: fixed;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #98f76b;
+	color: black;
+	padding: 12px 24px;
+	border-radius: 10px;
+	font-family: sans-serif;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease, transform 0.3s ease;
+	z-index: 9999;
+	max-width: 80%;
+	text-align: center;
 }
 
 /* Show state */
 .toast.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateX(-50%) translateY(0);
 }
 
+/* ✅ Responsive adjustments only for screens <= 300px */
+@media screen and (max-width: 300px) {
+	.main-container {
+		width: 90%;
+		height: auto;
+	}
 
-@media screen and (max-width: 500px) {
-    .main-container {
-        width: 90%;
-        height: auto;
-    }
+	.card-1 {
+		height: auto;
+		border-radius: 25px;
+		padding-bottom: 20px;
+	}
 
-    .card-1 {
-        height: auto;
-        border-radius: 25px;
-        padding-bottom: 20px;
-    }
+	.content {
+		padding: 15px;
+	}
 
-    .content {
-        padding: 15px;
-    }
+	.name-and-time {
+		font-size: 13px;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 5px;
+	}
 
-    .name-and-time {
-        font-size: 13px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
+	.profie {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 10px;
+		margin: 20px 0;
+	}
 
-    .profie {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 10px;
-        margin: 20px 0;
-    }
+	.work {
+		margin: 0;
+	}
 
-    .work {
-        margin: 0;
-    }
+	.button-container {
+		flex-direction: column;
+		gap: 10px;
+		flex-wrap: wrap; /* ✅ allow wrap ONLY on small screens */
+	}
 
-    .button-container {
-        flex-direction: column;
-        gap: 10px;
-    }
+	.button {
+		width: 100%;
+		padding: 12px;
+		font-size: 16px;
+	}
 
-    .button {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-    }
+	.card2 {
+		height: 40%;
+		border-radius: 25px;
+	}
 
-    .card2 {
-        height: 40%;
-        border-radius: 25px;
-    }
+	.high {
+		margin-top: 50px;
+		font-size: 14px;
+	}
 
-    .high {
-        margin-top: 50px;
-        font-size: 14px;
-    }
-
-    .toast {
-        font-size: 13px;
-        padding: 10px 16px;
-        bottom: 20px;
-        max-width: 90%;
-    }
+	.toast {
+		font-size: 13px;
+		padding: 10px 16px;
+		bottom: 20px;
+		max-width: 90%;
+	}
 }
